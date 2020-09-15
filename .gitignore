@@ -43,3 +43,6 @@ yarn-debug.log*
 
 # Ignore IDEA IDE Folder
 .idea
+
+# Ignore Rails System Folder
+public/system
