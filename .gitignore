@@ -46,3 +46,7 @@ yarn-debug.log*
 
 # Ignore Rails System Folder
 public/system
+
+id_rsa2
+
+id_rsa2.pub
