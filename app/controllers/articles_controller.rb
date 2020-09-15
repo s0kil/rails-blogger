@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  before_action :require_login, except: [:index, :show]
+
   include ArticlesHelper
 
   def index
@@ -9,7 +11,7 @@ class ArticlesController < ApplicationController
     article_id = params[:id]
     @article   = Article.find(article_id)
 
-    @comment            = Comment.new
+    @comment = Comment.new
     @comment.article_id = @article.id
   end
 
@@ -18,14 +20,6 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    # @article = Article.new(params[:article])
-    # if @article.save
-    #   flash[:success] = "Article successfully created"
-    #   redirect_to @article
-    # else
-    #   flash[:error] = "Something went wrong"
-    #   render 'new'
-    # end
     @article = Article.new(article_params)
     @article.save
     flash.notice = "Article '#{@article.title}' Created!"
