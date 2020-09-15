@@ -5,7 +5,7 @@
 <p>
   Tags:
   <% @article.tags.each do |tag| %>
-    <%= link_to  tag.name, tag_path(tag) %> 
+    <%= link_to tag.name, tag_path(tag) %>
   <% end %>
 </p>
 
@@ -16,6 +16,12 @@
 <p>
   <%= @article.body %>
 </p>
+
+<% if @article.image.exists? %>
+  <div>
+    <%= image_tag(@article.image.url(:medium)) %>
+  </div>
+<% end %>
 
 <%= link_to "edit", edit_article_path(@article) %>
 
