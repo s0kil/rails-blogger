@@ -1,0 +1,20 @@
+%h1= @article.title
+%p
+  Tags:
+  - @article.tags.each do |tag|
+    = link_to tag.name, tag_path(tag)
+%br
+= link_to "<< Back To All Articles", articles_path
+%hr
+%p= @article.body
+- if @article.image.exists?
+  %div= image_tag(@article.image.url)
+- if article_author_logged_in?
+  = link_to "edit", edit_article_path(@article)
+  = link_to "delete", article_path(@article), method: :delete, data: { confirm: "Really delete this article? " }
+= render partial: 'comments/form'
+
+%h3
+  Comments (#{@article.comments.size})
+
+= render partial: 'articles/comment', collection: @article.comments

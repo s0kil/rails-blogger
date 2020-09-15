@@ -1,0 +1,26 @@
+= form_for(@article, html: { multipart: true }) do |f|
+  %ul
+    - @article.errors.full_messages.each do |error|
+      %li =error
+  %p
+    =f.label :title
+    =f.text_field :title
+    %br
+  %p
+    =f.label :body
+    =f.text_area :body
+    %br
+  %p
+    =f.label :tag_list
+    =f.text_field :tag_list
+  %p
+    - if @article.image.exists?
+      = image_tag @article.image.url
+      %br
+      = f.label :image, 'Choose another Image'
+      = f.file_field :image
+    - else
+      = f.label :image, 'Attach an Image'
+      = f.file_field :image
+  %p
+    = f.submit

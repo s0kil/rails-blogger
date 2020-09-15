@@ -1,0 +1,7 @@
+%div
+  %h6 Comment By =comment.author_name
+  %p.comment= comment.body
+  %p
+    Posted
+    =distance_of_time_in_words(comment.article.created_at, comment.created_at)
+    later
