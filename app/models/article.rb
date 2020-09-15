@@ -1,4 +1,5 @@
 class Article < ApplicationRecord
+  belongs_to :author # Only Author Can Edit, Delete, Etc
   has_many :comments
   has_many :taggings
   has_many :tags, through: :taggings
