@@ -2,6 +2,14 @@
   <%= @article.title %>
 </h1>
 
+<p>
+  Tags:
+  <% @article.tags.each do |tag| %>
+    <%= link_to  tag.name, tag_path(tag) %> 
+  <% end %>
+</p>
+
+<br>
 <%= link_to "<< Back To All Articles", articles_path %>
 <hr>
 
